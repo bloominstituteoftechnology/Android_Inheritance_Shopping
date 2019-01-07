@@ -10,7 +10,8 @@ public class Sources extends ShoppingItem{
     private boolean isSentient;
 
     public Sources(String productName, int reqMana, String magicalProperties, boolean isSentient) {
-        super(this.COLOR, productName);
+
+        super(COLOR, productName);
         this.reqMana = reqMana;
         this.magicalProperty = magicalProperties;
         this.isSentient = isSentient;

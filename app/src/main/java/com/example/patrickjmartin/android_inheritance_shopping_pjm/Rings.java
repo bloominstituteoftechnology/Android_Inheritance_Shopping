@@ -11,7 +11,7 @@ public class Rings extends ShoppingItem {
 
     public Rings( String productName, int yearForged, String previousOwner, boolean isCursed) {
 
-        super(this.COLOR, productName);
+        super(COLOR, productName);
         this.yearForged = yearForged;
         this.previousOwner = previousOwner;
         this.isCursed = isCursed;

@@ -10,7 +10,8 @@ public class Potions extends ShoppingItem {
     private float toxicityLevel;
 
     public Potions(String productName, int goldValue, String brewedBy, float toxicityLevel) {
-        super(this.COLOR, productName);
+
+        super(COLOR, productName);
         this.goldValue = goldValue;
         this.brewedBy = brewedBy;
         this.toxicityLevel = toxicityLevel;

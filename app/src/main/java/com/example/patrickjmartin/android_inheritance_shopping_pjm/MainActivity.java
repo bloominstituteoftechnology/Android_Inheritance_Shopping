@@ -1,13 +1,24 @@
 package com.example.patrickjmartin.android_inheritance_shopping_pjm;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Context context;
+    private Activity activity;
+
+    private RecyclerView itemRecyclerView;
+    private GridLayoutManager gridLayoutManager;
+    private ItemAdapter itemAdapter;
 
     private ArrayList<ShoppingItem> arrayAdapter;
 
@@ -17,6 +28,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         arrayAdapter = generateValue();
+
+        itemRecyclerView = findViewById(R.id.searched_items_recyclerview);
+        itemRecyclerView.setHasFixedSize(true);
+
+        gridLayoutManager = new GridLayoutManager(context, 2);
+        itemRecyclerView.setLayoutManager(gridLayoutManager);
+
+        itemAdapter = new ItemAdapter(arrayAdapter, activity);
+
+        itemRecyclerView.setAdapter(itemAdapter);
+
 
 
     }

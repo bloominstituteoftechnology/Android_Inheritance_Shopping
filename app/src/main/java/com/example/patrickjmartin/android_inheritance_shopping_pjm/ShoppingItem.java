@@ -10,7 +10,7 @@ public class ShoppingItem {
         this.productName = productName;
     }
 
-    public String getProductName() {
+    public String getDisplayName() {
         return productName;
     }
 }

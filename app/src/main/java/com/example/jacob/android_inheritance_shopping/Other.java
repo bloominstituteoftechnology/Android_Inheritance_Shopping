@@ -3,8 +3,8 @@ package com.example.jacob.android_inheritance_shopping;
 public class Other extends ShoppingItem {
     private boolean needsTruck;
 
-    protected Other(int colorId, String name, boolean needsTruck) {
-        super(colorId, name);
+    public Other(int id, int colorId, String name, boolean needsTruck) {
+        super(id, colorId, name);
         this.needsTruck = needsTruck;
         this.colorId = (R.color.colorOther);
     }

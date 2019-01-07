@@ -34,6 +34,7 @@ public class ItemListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private static ArrayList<ShoppingItem> shoppingList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,28 +62,30 @@ public class ItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
+        shoppingList = shopppingItemTestListGenerator();
+
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, shoppingList, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ItemListActivity mParentActivity;
-        private final List<DummyContent.DummyItem> mValues;
+//        private final List<DummyContent.DummyItem> shoppingList;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
+                ShoppingItem item = (ShoppingItem) view.getTag();
                 if (mTwoPane) {
                     Bundle arguments = new Bundle();
-                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, item.id);
+                    arguments.putString(ItemDetailFragment.ARG_ITEM_ID, String.valueOf(item.getId()));
                     ItemDetailFragment fragment = new ItemDetailFragment();
                     fragment.setArguments(arguments);
                     mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -91,17 +94,16 @@ public class ItemListActivity extends AppCompatActivity {
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, ItemDetailActivity.class);
-                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, item.id);
-
+                    intent.putExtra(ItemDetailFragment.ARG_ITEM_ID, String.valueOf(item.getId()));
                     context.startActivity(intent);
                 }
             }
         };
 
         SimpleItemRecyclerViewAdapter(ItemListActivity parent,
-                                      List<DummyContent.DummyItem> items,
+                                      ArrayList<ShoppingItem> items,
                                       boolean twoPane) {
-            mValues = items;
+            shoppingList = items;
             mParentActivity = parent;
             mTwoPane = twoPane;
         }
@@ -115,16 +117,16 @@ public class ItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+            holder.mIdView.setText(shoppingList.get(position).getDisplayName());
+//            holder.mContentView.setText(shoppingList.get(position).content);
 
-            holder.itemView.setTag(mValues.get(position));
+            holder.itemView.setTag(shoppingList.get(position));
             holder.itemView.setOnClickListener(mOnClickListener);
         }
 
         @Override
         public int getItemCount() {
-            return mValues.size();
+            return shoppingList.size();
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
@@ -141,21 +143,21 @@ public class ItemListActivity extends AppCompatActivity {
 
     public static ArrayList<ShoppingItem> shopppingItemTestListGenerator() {
         ArrayList<ShoppingItem> shoppingList = new ArrayList<>();
-        Grocery groceryItem = new Grocery(-1,"Milk", true);
+        Grocery groceryItem = new Grocery(shoppingList.size(), -1,"Milk", true);
         shoppingList.add(groceryItem);
-        groceryItem = new Grocery(-1,"Eggs", true);
+        groceryItem = new Grocery(shoppingList.size(), -1,"Eggs", true);
         shoppingList.add(groceryItem);
-        groceryItem = new Grocery(-1,"Spaghetti Noodles", false);
+        groceryItem = new Grocery(shoppingList.size(), -1,"Spaghetti Noodles", false);
         shoppingList.add(groceryItem);
-        Clothing clothingItem = new Clothing(-1, "Shoes", "Men's 10.5");
+        Clothing clothingItem = new Clothing(shoppingList.size(), -1, "Shoes", "Men's 10.5");
         shoppingList.add(clothingItem);
-        clothingItem = new Clothing(-1, "Shirt", "Large");
+        clothingItem = new Clothing(shoppingList.size(), -1, "Shirt", "Large");
         shoppingList.add(clothingItem);
-        Other otherItem = new Other(-1, "Dishwasher", true);
+        Other otherItem = new Other(shoppingList.size(), -1, "Dishwasher", true);
         shoppingList.add(otherItem);
-        otherItem = new Other(-1, "Stamps", false);
+        otherItem = new Other(shoppingList.size(), -1, "Stamps", false);
         shoppingList.add(otherItem);
-        otherItem = new Other(-1, "Greeting Cards", false);
+        otherItem = new Other(shoppingList.size(), -1, "Greeting Cards", false);
         shoppingList.add(otherItem);
         return shoppingList;
     }

@@ -1,5 +1,10 @@
 package com.example.jacob.android_inheritance_shopping.dummy;
 
+import com.example.jacob.android_inheritance_shopping.Clothing;
+import com.example.jacob.android_inheritance_shopping.Grocery;
+import com.example.jacob.android_inheritance_shopping.Other;
+import com.example.jacob.android_inheritance_shopping.ShoppingItem;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

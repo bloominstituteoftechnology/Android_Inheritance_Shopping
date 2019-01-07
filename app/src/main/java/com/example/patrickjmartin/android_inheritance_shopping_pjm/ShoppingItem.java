@@ -13,4 +13,8 @@ public class ShoppingItem {
     public String getDisplayName() {
         return productName;
     }
+
+    public int getColorID() {
+        return colorID;
+    }
 }

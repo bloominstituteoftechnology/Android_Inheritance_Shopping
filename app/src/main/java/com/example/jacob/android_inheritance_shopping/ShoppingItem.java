@@ -1,7 +1,7 @@
 package com.example.jacob.android_inheritance_shopping;
 
 public class ShoppingItem {
-    private int colorId;
+    int colorId;
     String name;
 
     public ShoppingItem(int colorId, String name) {

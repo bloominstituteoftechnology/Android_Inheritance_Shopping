@@ -13,10 +13,6 @@ public class ShoppingItem {
         return colorId;
     }
 
-    public void setColorId(int colorId) {
-        this.colorId = colorId;
-    }
-
     public String getName() {
         return name;
     }

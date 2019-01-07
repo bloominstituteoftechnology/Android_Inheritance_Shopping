@@ -11,6 +11,14 @@ public class Grocery extends ShoppingItem {
         this.colorId = (R.color.colorGrocery);
     }
 
+    public boolean getNeedsRefrigeration() {
+        return needsRefrigeration;
+    }
+
+    public void setNeedsRefrigeration(boolean needsRefrigeration) {
+        this.needsRefrigeration = needsRefrigeration;
+    }
+
     @Override
     public String getDisplayName() {
         return String.format("%s - Needs refrigerated: %s", this.name, needsRefrigeration ? "Yes" : "No");

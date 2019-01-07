@@ -9,10 +9,16 @@ public class Clothing extends ShoppingItem {
         this.colorId = (R.color.colorClothing);
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     @Override
     public String getDisplayName() {
         return String.format("%s - Size: %s", this.name, this.size);
     }
 }
-
-

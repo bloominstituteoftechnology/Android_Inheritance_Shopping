@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.jacob.android_inheritance_shopping.dummy.DummyContent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -137,4 +138,27 @@ public class ItemListActivity extends AppCompatActivity {
             }
         }
     }
+
+    public static ArrayList<ShoppingItem> shopppingItemTestListGenerator() {
+        ArrayList<ShoppingItem> shoppingList = new ArrayList<>();
+        Grocery groceryItem = new Grocery(-1,"Milk", true);
+        shoppingList.add(groceryItem);
+        groceryItem = new Grocery(-1,"Eggs", true);
+        shoppingList.add(groceryItem);
+        groceryItem = new Grocery(-1,"Spaghetti Noodles", false);
+        shoppingList.add(groceryItem);
+        Clothing clothingItem = new Clothing(-1, "Shoes", "Men's 10.5");
+        shoppingList.add(clothingItem);
+        clothingItem = new Clothing(-1, "Shirt", "Large");
+        shoppingList.add(clothingItem);
+        Other otherItem = new Other(-1, "Dishwasher", true);
+        shoppingList.add(otherItem);
+        otherItem = new Other(-1, "Stamps", false);
+        shoppingList.add(otherItem);
+        otherItem = new Other(-1, "Greeting Cards", false);
+        shoppingList.add(otherItem);
+        return shoppingList;
+    }
+
+
 }

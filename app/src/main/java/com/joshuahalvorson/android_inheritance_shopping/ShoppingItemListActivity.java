@@ -1,7 +1,5 @@
 package com.joshuahalvorson.android_inheritance_shopping;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -12,20 +10,11 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.joshuahalvorson.android_inheritance_shopping.dummy.DummyContent;
-
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * An activity representing a list of ItemsShoppingItems. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a {@link ShoppingItemDetailActivity} representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
 public class ShoppingItemListActivity extends AppCompatActivity {
 
     /**
@@ -33,6 +22,7 @@ public class ShoppingItemListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private ArrayList<ShoppingItem> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +33,6 @@ public class ShoppingItemListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         if (findViewById(R.id.shoppingitem_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
@@ -60,45 +41,41 @@ public class ShoppingItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
+        items = new ArrayList<>();
+        items.add(new Dessert("Ice Cream"));
+        items.add(new Electronics("Headphones"));
+        items.add(new Dessert("Popsicles"));
+        items.add(new Clothing("Hoodie"));
+        items.add(new Electronics("Speaker"));
+        items.add(new Clothing("T-Shirt"));
+        items.add(new Dessert("Ice Cream Bars"));
+        items.add(new Clothing("Shorts"));
+        items.add(new Electronics("Camera"));
+        items.add(new Clothing("Pants"));
+        items.add(new Electronics("Video Game"));
+        items.add(new Dessert("Pie"));
+        items.add(new Electronics("Phone"));
+        items.add(new Clothing("Shoes"));
+        items.add(new Dessert("Cake"));
+
         View recyclerView = findViewById(R.id.shoppingitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, items, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ShoppingItemListActivity mParentActivity;
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<ShoppingItem> mValues;
         private final boolean mTwoPane;
-        private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ShoppingItemDetailFragment.ARG_ITEM_ID, item.id);
-                    ShoppingItemDetailFragment fragment = new ShoppingItemDetailFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.shoppingitem_detail_container, fragment)
-                            .commit();
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, ShoppingItemDetailActivity.class);
-                    intent.putExtra(ShoppingItemDetailFragment.ARG_ITEM_ID, item.id);
-
-                    context.startActivity(intent);
-                }
-            }
-        };
 
         SimpleItemRecyclerViewAdapter(ShoppingItemListActivity parent,
-                                      List<DummyContent.DummyItem> items,
+                                      List<ShoppingItem> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -114,11 +91,10 @@ public class ShoppingItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
-
+            holder.mIdView.setText(mValues.get(position).productName);
+            holder.mContentView.setText(mValues.get(position).getDisplayName());
             holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
+            holder.parentView.setBackgroundColor(mValues.get(position).colorId);
         }
 
         @Override
@@ -129,11 +105,13 @@ public class ShoppingItemListActivity extends AppCompatActivity {
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;
             final TextView mContentView;
+            final LinearLayout parentView;
 
             ViewHolder(View view) {
                 super(view);
-                mIdView = (TextView) view.findViewById(R.id.id_text);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                parentView = view.findViewById(R.id.parent_view);
+                mIdView = view.findViewById(R.id.id_text);
+                mContentView = view.findViewById(R.id.content);
             }
         }
     }

@@ -12,10 +12,11 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.lambda_school_loaner_47.android_inheritance.dummy.DummyContent;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public class ShoppingItemListActivity extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private ArrayList<ShoppingItem> shoppingItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,45 +62,40 @@ public class ShoppingItemListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
+        shoppingItems = new ArrayList<>();
+
+        CampingItem campingItem       = new CampingItem("Knife");
+        ElectronicItem electronicItem = new ElectronicItem("Batteries");
+        GroceryItem groceryItem       = new GroceryItem("Water");
+
+        shoppingItems.add(campingItem);
+        shoppingItems.add(electronicItem);
+        shoppingItems.add(groceryItem);
+
         View recyclerView = findViewById(R.id.shoppingitem_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, mTwoPane));
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, shoppingItems, mTwoPane));
     }
 
     public static class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ShoppingItemListActivity mParentActivity;
-        private final List<DummyContent.DummyItem> mValues;
+        private final ArrayList<ShoppingItem> mValues;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DummyContent.DummyItem item = (DummyContent.DummyItem) view.getTag();
-                if (mTwoPane) {
-                    Bundle arguments = new Bundle();
-                    arguments.putString(ShoppingItemDetailFragment.ARG_ITEM_ID, item.id);
-                    ShoppingItemDetailFragment fragment = new ShoppingItemDetailFragment();
-                    fragment.setArguments(arguments);
-                    mParentActivity.getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.shoppingitem_detail_container, fragment)
-                            .commit();
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, ShoppingItemDetailActivity.class);
-                    intent.putExtra(ShoppingItemDetailFragment.ARG_ITEM_ID, item.id);
 
-                    context.startActivity(intent);
-                }
             }
         };
 
         SimpleItemRecyclerViewAdapter(ShoppingItemListActivity parent,
-                                      List<DummyContent.DummyItem> items,
+                                      ArrayList<ShoppingItem> items,
                                       boolean twoPane) {
             mValues = items;
             mParentActivity = parent;
@@ -114,11 +111,31 @@ public class ShoppingItemListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
 
-            holder.itemView.setTag(mValues.get(position));
-            holder.itemView.setOnClickListener(mOnClickListener);
+            ShoppingItem current = mValues.get(position);
+            holder.mIdView.setText(current.getDisplayName());
+            holder.parent.setBackgroundColor(current.colorId);
+            holder.mIdView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShoppingItem item = (ShoppingItem) v.getTag();
+                    if (mTwoPane) {
+                        Bundle arguments = new Bundle();
+                        arguments.putString(ShoppingItemDetailFragment.ARG_ITEM_ID, item.getDisplayName());
+                        ShoppingItemDetailFragment fragment = new ShoppingItemDetailFragment();
+                        fragment.setArguments(arguments);
+                        mParentActivity.getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.shoppingitem_detail_container, fragment)
+                                .commit();
+                    } else {
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, ShoppingItemDetailActivity.class);
+                        intent.putExtra(ShoppingItemDetailFragment.ARG_ITEM_ID, item.getDisplayName());
+
+                        context.startActivity(intent);
+                    }
+                }
+            });
         }
 
         @Override
@@ -128,12 +145,12 @@ public class ShoppingItemListActivity extends AppCompatActivity {
 
         class ViewHolder extends RecyclerView.ViewHolder {
             final TextView mIdView;
-            final TextView mContentView;
+            LinearLayout parent;
 
             ViewHolder(View view) {
                 super(view);
                 mIdView = (TextView) view.findViewById(R.id.id_text);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                parent = view.findViewById(R.id.parentLayout);
             }
         }
     }

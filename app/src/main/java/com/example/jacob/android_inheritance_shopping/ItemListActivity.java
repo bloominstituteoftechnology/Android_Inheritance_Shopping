@@ -16,10 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.jacob.android_inheritance_shopping.dummy.DummyContent;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * An activity representing a list of Items. This activity
@@ -157,16 +154,16 @@ public class ItemListActivity extends AppCompatActivity {
         shoppingList.add(item);
         item = new Grocery(shoppingList.size(), -1, "Spaghetti Noodles", false);
         shoppingList.add(item);
-        Clothing clothingItem = new Clothing(shoppingList.size(), -1, "Shoes", "Men's 10.5");
-        shoppingList.add(clothingItem);
-        clothingItem = new Clothing(shoppingList.size(), -1, "Shirt", "Large");
-        shoppingList.add(clothingItem);
-        Other otherItem = new Other(shoppingList.size(), -1, "Dishwasher", true);
-        shoppingList.add(otherItem);
-        otherItem = new Other(shoppingList.size(), -1, "Stamps", false);
-        shoppingList.add(otherItem);
-        otherItem = new Other(shoppingList.size(), -1, "Greeting Cards", false);
-        shoppingList.add(otherItem);
+        item = new Clothing(shoppingList.size(), -1, "Shoes", "Men's 10.5");
+        shoppingList.add(item);
+        item = new Clothing(shoppingList.size(), -1, "Shirt", "Large");
+        shoppingList.add(item);
+        item = new Other(shoppingList.size(), -1, "Dishwasher", true);
+       shoppingList.add(item);
+        item = new Other(shoppingList.size(), -1, "Stamps", false);
+       shoppingList.add(item);
+        item = new Other(shoppingList.size(), -1, "Greeting Cards", false);
+       shoppingList.add(item);
         return shoppingList;
     }
 

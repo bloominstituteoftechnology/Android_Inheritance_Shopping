@@ -2,11 +2,12 @@ package com.example.jacob.android_inheritance_shopping;
 
 public class Other extends ShoppingItem {
     private boolean needsTruck;
+    private final int BACKGROUND_COLOR = R.color.colorOther;
 
     public Other(int id, int colorId, String name, boolean needsTruck) {
         super(id, colorId, name);
         this.needsTruck = needsTruck;
-        this.colorId = (R.color.colorOther);
+        this.colorId = BACKGROUND_COLOR;
     }
 
     public boolean getNeedsTruck() {

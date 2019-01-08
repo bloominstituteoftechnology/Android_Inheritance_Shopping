@@ -1,12 +1,15 @@
 package com.example.jacob.android_inheritance_shopping;
 
 public class Clothing extends ShoppingItem {
+    private final int BACKGROUND_COLOR = R.color.colorClothing;
+
     private String size;
+
 
     public Clothing(int id, int colorId, String name, String size) {
         super(id, colorId, name);
         this.size = size;
-        this.colorId = (R.color.colorClothing);
+        this.colorId = BACKGROUND_COLOR;
     }
 
     public String getSize() {

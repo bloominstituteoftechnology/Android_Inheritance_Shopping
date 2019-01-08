@@ -12,7 +12,7 @@ public class ElectronicItem extends ShoppingItem {
         return batteries;
     }
 
-    protected ElectronicItem(int colorId, String productName) {
+    protected ElectronicItem(String productName) {
         super(COLOR_ID, productName);
         this.batteries = "Make sure they're charged";
     }

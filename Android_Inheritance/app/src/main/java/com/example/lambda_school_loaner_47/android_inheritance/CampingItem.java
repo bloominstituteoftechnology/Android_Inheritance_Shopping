@@ -6,7 +6,7 @@ public class CampingItem extends ShoppingItem {
     private static int COLOR_ID = Color.WHITE;
     protected String hunting;
 
-    protected CampingItem(int colorId, String productName) {
+    protected CampingItem(String productName) {
         super(COLOR_ID, productName);
         this.hunting = "Its sharp";
     }

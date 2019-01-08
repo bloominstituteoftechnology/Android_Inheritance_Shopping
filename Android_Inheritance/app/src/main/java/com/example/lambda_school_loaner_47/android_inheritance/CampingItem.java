@@ -7,7 +7,7 @@ public class CampingItem extends ShoppingItem {
     protected String hunting;
 
     protected CampingItem(int colorId, String productName) {
-        super(colorId, productName);
+        super(COLOR_ID, productName);
         this.hunting = "Its sharp";
     }
 

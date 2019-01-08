@@ -5,12 +5,12 @@ public class ShoppingItem {
     int colorId;
     String name;
 
-    public ShoppingItem(int id, int colorId, String name) {
+    protected ShoppingItem(int id, int colorId, String name) {
         this.id = id;
         this.colorId = colorId;
         this.name = name;
     }
-    public ShoppingItem() {}
+//    public ShoppingItem() {}
 
     public int getId() {
         return id;

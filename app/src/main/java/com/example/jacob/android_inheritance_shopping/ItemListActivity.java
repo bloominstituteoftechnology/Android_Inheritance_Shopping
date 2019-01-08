@@ -2,8 +2,10 @@ package com.example.jacob.android_inheritance_shopping;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -35,11 +37,14 @@ public class ItemListActivity extends AppCompatActivity {
      */
     private boolean mTwoPane;
     private static ArrayList<ShoppingItem> shoppingList;
+    static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
+
+        context = this;
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,6 +72,7 @@ public class ItemListActivity extends AppCompatActivity {
         View recyclerView = findViewById(R.id.item_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -77,7 +83,7 @@ public class ItemListActivity extends AppCompatActivity {
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final ItemListActivity mParentActivity;
-//        private final List<DummyContent.DummyItem> shoppingList;
+        //        private final List<DummyContent.DummyItem> shoppingList;
         private final boolean mTwoPane;
         private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
             @Override
@@ -118,6 +124,7 @@ public class ItemListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mIdView.setText(shoppingList.get(position).getDisplayName());
+            holder.mIdView.setBackgroundColor(ContextCompat.getColor(context, shoppingList.get(position).getColorId()));
 //            holder.mContentView.setText(shoppingList.get(position).content);
 
             holder.itemView.setTag(shoppingList.get(position));
@@ -143,12 +150,13 @@ public class ItemListActivity extends AppCompatActivity {
 
     public static ArrayList<ShoppingItem> shopppingItemTestListGenerator() {
         ArrayList<ShoppingItem> shoppingList = new ArrayList<>();
-        Grocery groceryItem = new Grocery(shoppingList.size(), -1,"Milk", true);
-        shoppingList.add(groceryItem);
-        groceryItem = new Grocery(shoppingList.size(), -1,"Eggs", true);
-        shoppingList.add(groceryItem);
-        groceryItem = new Grocery(shoppingList.size(), -1,"Spaghetti Noodles", false);
-        shoppingList.add(groceryItem);
+//        Grocery groceryItem = new Grocery(shoppingList.size(), -1,"Milk", true);
+        ShoppingItem item = new Grocery(shoppingList.size(), -1, "Milk", true);
+        shoppingList.add(item);
+        item = new Grocery(shoppingList.size(), -1, "Eggs", true);
+        shoppingList.add(item);
+        item = new Grocery(shoppingList.size(), -1, "Spaghetti Noodles", false);
+        shoppingList.add(item);
         Clothing clothingItem = new Clothing(shoppingList.size(), -1, "Shoes", "Men's 10.5");
         shoppingList.add(clothingItem);
         clothingItem = new Clothing(shoppingList.size(), -1, "Shirt", "Large");

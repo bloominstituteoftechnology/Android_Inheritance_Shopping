@@ -8,7 +8,7 @@ public class Electronics extends ShoppingItem{
 
     @Override
     public String getDisplayName() {
-        return super.getDisplayName() + "- Batteries Not Included";
+        return super.getDisplayName() + " - Batteries Not Included";
     }
 
     protected Electronics(String productName){

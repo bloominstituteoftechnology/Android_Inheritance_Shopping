@@ -1,13 +1,13 @@
 package com.example.myapplication;
 
-public class GroceryItems extends ShoppingItem {
+public class GroceryItem extends ShoppingItem {
 
 
-    protected GroceryItems(int colorId, String productName) {
+    protected GroceryItem(int colorId, String productName) {
         super(colorId, productName);
     }
 
-    protected GroceryItems(String productName){
+    protected GroceryItem(String productName){
         this(R.color.colorGroceryItem, productName);
     }
 

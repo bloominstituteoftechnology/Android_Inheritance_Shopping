@@ -13,5 +13,7 @@ public class ShoppingItem {
         return productName;
     }
 
-
+    public int getColorId() {
+        return colorId;
+    }
 }

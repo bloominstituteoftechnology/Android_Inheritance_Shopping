@@ -1,6 +1,8 @@
 package com.lambdaschool.android_inheritance_shopping;
 
-public class ShoppingItem {
+import java.io.Serializable;
+
+public class ShoppingItem implements Serializable {
     private int colorId;
     private String productName;
 
@@ -11,5 +13,13 @@ public class ShoppingItem {
 
     public String getDisplayName() {
         return this.productName + " & ";
+    }
+
+    public int getColorId() {
+        return colorId;
+    }
+
+    public String getProductName() {
+        return productName;
     }
 }

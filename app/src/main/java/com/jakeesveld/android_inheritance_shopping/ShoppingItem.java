@@ -4,8 +4,7 @@ public class ShoppingItem {
     private int colorId;
     private String name;
 
-    public ShoppingItem(int colorId, String name) {
-        this.colorId = colorId;
+    public ShoppingItem(String name) {
         this.name = name;
     }
 

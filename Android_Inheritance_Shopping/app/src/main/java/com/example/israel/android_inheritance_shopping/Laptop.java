@@ -4,8 +4,10 @@ import android.graphics.Color;
 
 public class Laptop extends ShoppingItem {
 
+    public static final int COLOR = Color.GRAY;
+
     public Laptop() {
-        super(Color.GRAY, "Laptop");
+        super(COLOR, "Laptop");
     }
 
     @Override

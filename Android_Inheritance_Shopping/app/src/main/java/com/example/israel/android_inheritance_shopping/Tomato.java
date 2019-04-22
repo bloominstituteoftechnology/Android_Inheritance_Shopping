@@ -4,8 +4,10 @@ import android.graphics.Color;
 
 public class Tomato extends ShoppingItem {
 
+    public static final int COLOR = Color.argb(255,200,50,50);
+
     public Tomato() {
-        super(Color.argb(255,200,50,50), "Tomato");
+        super(COLOR, "Tomato");
     }
 
     @Override

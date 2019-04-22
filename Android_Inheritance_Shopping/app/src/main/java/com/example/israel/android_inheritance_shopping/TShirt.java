@@ -4,8 +4,10 @@ import android.graphics.Color;
 
 public class TShirt extends ShoppingItem {
 
+    public static final int COLOR = Color.WHITE;
+
     public TShirt() {
-        super(Color.WHITE, "TShirt");
+        super(COLOR, "TShirt");
     }
 
     @Override

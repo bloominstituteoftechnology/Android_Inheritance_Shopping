@@ -49,7 +49,7 @@ public class ItemDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setBackgroundColor(mItem.getColorId());
+                appBarLayout.setBackgroundResource(mItem.getColorId());
                 appBarLayout.setTitle(mItem.getProductName());
             }
         }

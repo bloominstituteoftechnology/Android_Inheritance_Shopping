@@ -5,7 +5,7 @@ public class ClothingItem extends ShoppingItem {
     private static final int colorId = R.color.clothingColor;
     private String material;
 
-    public ClothingItem(int colorId, double price, String productName, String material) {
+    public ClothingItem(double price, String productName, String material) {
         super(colorId, price, productName);
         this.material = material;
     }

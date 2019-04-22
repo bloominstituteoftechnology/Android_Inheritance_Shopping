@@ -4,7 +4,7 @@ public class GroceryItem extends ShoppingItem {
     private static final int colorId = R.color.groceryColor;
     private String expirationDate;
 
-    public GroceryItem(int colorId, double price, String productName, String expirationDate) {
+    public GroceryItem(double price, String productName, String expirationDate) {
         super(colorId, price, productName);
         this.expirationDate = expirationDate;
     }

@@ -2,7 +2,7 @@ package com.vivekvishwanath.android_inheritance_shopping;
 
 public class ShoppingItem {
 
-    private static int colorId;
+    private final int colorId;
     private double price;
     private String productName;
 
@@ -12,7 +12,7 @@ public class ShoppingItem {
         this.productName = productName;
     }
 
-    public static int getColorId() {
+    public int getColorId() {
         return colorId;
     }
 
@@ -35,7 +35,5 @@ public class ShoppingItem {
     public String getDisplayName() {
         return productName;
     }
-
-
 
 }

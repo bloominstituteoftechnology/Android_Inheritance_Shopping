@@ -70,18 +70,21 @@ public class ItemListActivity extends AppCompatActivity {
 
     private void populateShoppingBag() {
         shoppingItemArrayList = new ArrayList<>();
-        shoppingItemArrayList.add(new Food("Milk", "Tuesday"));
-        shoppingItemArrayList.add(new Automotive("Oil", true));
-        shoppingItemArrayList.add(new Bedroom("Sheets", 300));
-        shoppingItemArrayList.add(new Food("Cheese", "Friday"));
-        shoppingItemArrayList.add(new Automotive("Brake Fluid", true));
-        shoppingItemArrayList.add(new Bedroom("Towels", 150));
-        shoppingItemArrayList.add(new Food("Jam", "December"));
-        shoppingItemArrayList.add(new Automotive("Headlights", false));
-        shoppingItemArrayList.add(new Bedroom("Curtains", 50));
-        shoppingItemArrayList.add(new Food("Apples", "Sunday"));
-        shoppingItemArrayList.add(new Automotive("Air Freshener", false));
-        shoppingItemArrayList.add(new Bedroom("Nightstand Lamp", 0));
+
+        for (int i = 1; i <= 30; ++i) {
+            shoppingItemArrayList.add(new Food("Milk" + i, "Tuesday"));
+            shoppingItemArrayList.add(new Automotive("Oil" + i, true));
+            shoppingItemArrayList.add(new Bedroom("Sheets" + i, 300));
+            shoppingItemArrayList.add(new Food("Cheese" + i, "Friday"));
+            shoppingItemArrayList.add(new Automotive("Brake Fluid" + i, true));
+            shoppingItemArrayList.add(new Bedroom("Towels" + i, 150));
+            shoppingItemArrayList.add(new Food("Jam" + i, "December"));
+            shoppingItemArrayList.add(new Automotive("Headlights" + i, false));
+            shoppingItemArrayList.add(new Bedroom("Curtains" + i, 50));
+            shoppingItemArrayList.add(new Food("Apples" + i, "Sunday"));
+            shoppingItemArrayList.add(new Automotive("Air Freshener" + i, false));
+            shoppingItemArrayList.add(new Bedroom("Nightstand Lamp" + i, 0));
+        }
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

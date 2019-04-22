@@ -2,6 +2,7 @@ package com.jakeesveld.android_inheritance_shopping;
 
 public class FurnitureItem extends ShoppingItem {
 
+    private final int colorId = R.color.colorPrimaryDark;
 
     public FurnitureItem(String name) {
         super(name);
@@ -9,6 +10,6 @@ public class FurnitureItem extends ShoppingItem {
     }
     @Override
     public int getColorId() {
-        return R.color.colorPrimaryDark;
+        return colorId;
     }
 }

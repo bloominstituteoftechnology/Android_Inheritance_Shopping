@@ -2,6 +2,7 @@ package com.jakeesveld.android_inheritance_shopping;
 
 public class ElectronicItem extends ShoppingItem {
 
+    private final int colorId = R.color.colorAccent;
 
     public ElectronicItem(String name) {
         super(name);
@@ -9,6 +10,6 @@ public class ElectronicItem extends ShoppingItem {
 
     @Override
     public int getColorId() {
-        return R.color.colorAccent;
+        return colorId;
     }
 }

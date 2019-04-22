@@ -2,6 +2,7 @@ package com.lambdaschool.android_inheritance_shopping;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -128,8 +129,7 @@ public class ItemListActivity extends AppCompatActivity {
             ShoppingItem shoppingItem = mValues.get(position);
             holder.mIdView.setText(shoppingItem.getColorId());
             holder.mContentView.setText(shoppingItem.getDisplayName());
-            int color=shoppingItem.getColorId();
-            holder.mParentLayout.setBackgroundColor(shoppingItem.getColorId());
+            holder.mParentLayout.setBackgroundResource(shoppingItem.getColorId());
             holder.itemView.setTag(shoppingItem);
             holder.itemView.setOnClickListener(mOnClickListener);
         }

@@ -12,4 +12,9 @@ public class FurnitureItem extends ShoppingItem {
     public int getColorId() {
         return colorId;
     }
+
+    @Override
+    public String getName() {
+        return (super.getName() + "(Furniture)");
+    }
 }

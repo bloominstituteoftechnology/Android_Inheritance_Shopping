@@ -11,4 +11,9 @@ public class GroceryItem extends ShoppingItem {
     public int getColorId() {
         return colorId;
     }
+
+    @Override
+    public String getName() {
+        return (super.getName() + "(Grocery)");
+    }
 }

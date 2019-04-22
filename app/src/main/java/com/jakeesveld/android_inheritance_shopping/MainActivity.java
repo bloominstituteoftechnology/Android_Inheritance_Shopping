@@ -21,6 +21,19 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listAdapter);
 
+        populateList();
+    }
 
+    public void populateList(){
+        itemList.add(new ElectronicItem("Computer"));
+        itemList.add(new FurnitureItem("Couch"));
+        itemList.add(new GroceryItem("Bananas"));
+        itemList.add(new GroceryItem("Apples"));
+        itemList.add(new ElectronicItem("Camera"));
+        itemList.add(new FurnitureItem("Desk"));
+        itemList.add(new ElectronicItem("Monitor"));
+        itemList.add(new GroceryItem("Poptarts"));
+        itemList.add(new FurnitureItem("Chair"));
+        listAdapter.notifyDataSetChanged();
     }
 }

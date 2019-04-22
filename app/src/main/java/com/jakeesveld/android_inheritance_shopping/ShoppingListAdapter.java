@@ -28,7 +28,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         ShoppingItem data = dataList.get(i);
         viewHolder.textTitle.setText(data.getName());
-        viewHolder.parentView.setBackgroundColor(data.getColorId());
+        viewHolder.parentView.setBackgroundColor(viewHolder.parentView.getContext().getResources().getColor(data.getColorId()));
     }
 
     @Override

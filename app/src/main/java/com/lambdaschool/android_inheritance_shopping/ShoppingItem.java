@@ -1,8 +1,8 @@
 package com.lambdaschool.android_inheritance_shopping;
 
 public class ShoppingItem {
-    protected int colorId;
-    protected String productName;
+    private int colorId;
+    private String productName;
 
     protected ShoppingItem(int colorId, String productName) {
         this.colorId = colorId;
@@ -10,6 +10,6 @@ public class ShoppingItem {
     }
 
     public String getDisplayName() {
-        return this.productName;
+        return this.productName + " & ";
     }
 }

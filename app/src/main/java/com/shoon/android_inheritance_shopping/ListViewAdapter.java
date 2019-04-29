@@ -40,7 +40,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         context=viewGroup.getContext();
 
 
-        View entryView = LayoutInflater.from(context).inflate(R.layout.activity_list_view, viewGroup, false);
+        View entryView = LayoutInflater.from(context).inflate(R.layout.content_list_view, viewGroup, false);
 
 
         return new ViewHolder(entryView);

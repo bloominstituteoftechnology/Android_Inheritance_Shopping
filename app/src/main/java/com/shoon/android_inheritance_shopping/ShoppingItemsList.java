@@ -68,6 +68,8 @@ public class ShoppingItemsList implements Parcelable {
 
     }
 
+
+
     public ShoppingItemsList(ArrayList<ShoppingItem> alShoppingItems) {
         this.alShoppingItems = alShoppingItems;
 

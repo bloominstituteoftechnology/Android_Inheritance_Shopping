@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         if(shoppingItemsList==null){
             shoppingItemsList=new ShoppingItemsList(context);
 
+
         }
 
 
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendData() {
         if(shoppingItemsList.size()==0)return;
+        shoppingItemsList.save();
         Intent intent = new Intent(context, ListView.class);
         intent.putExtra("DATA_I_NEED",shoppingItemsList);
         //       fromOtherScreen=true;

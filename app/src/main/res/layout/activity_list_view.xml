@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ListView"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+    <TextView
+        android:text="Shopping List"
+        android:id="@+id/text_test_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send" />
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recycler_view">
+
+
+
+        </android.support.v7.widget.RecyclerView>
+
+        title_activity_image_list_view
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

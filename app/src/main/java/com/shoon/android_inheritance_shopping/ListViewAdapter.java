@@ -66,6 +66,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     }
 
     private void changeBackGroundColorAndCheckData(ViewHolder vh){
+        return;
 
     }
 
